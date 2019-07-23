@@ -4,13 +4,15 @@ export class Post {
   content:string;
   loveIts : number;
   created_at : Date;
+  loose:string
 
       constructor(  title:string, content:string )
       {
                 this.title=title;
                 this.content=content;
-                this.created_at=new Date();
+                this.created_at= new Date();
                 this.loveIts=0;
+                this.loose="ta mère";
       }
 
 }

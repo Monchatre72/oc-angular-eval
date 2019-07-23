@@ -1,1 +1,23 @@
-<p>item works!</p>
+<li [ngClass]="{'list-group-item' : true,
+'list-group-item-success' :post.loveIts>0,
+'list-group-item-danger' :post.loveIts<0
+}">
+  <div class="container">
+    <div class="row">
+      <div class="left col-xs-6">
+        <h3><b> {{post.title}}</b> </h3>
+      </div>
+      <div class="text-center col-xs-6">
+        <div class="text-muted"><i>{{post.created_at | date : 'short'}}</i></div >
+      </div>
+    </div>
+  </div>
+
+  {{post.content}}
+
+  <div class="btn-group-xs">
+    <br/>
+    <button class="btn btn-success" (click)="increaseLoveIts()">j'aime</button>
+    <button class="btn btn-danger" (click)="decreaseLoveIts()">je n'aime pas</button>
+  </div>
+</li>

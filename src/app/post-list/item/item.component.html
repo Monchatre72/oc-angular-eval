@@ -2,22 +2,23 @@
 'list-group-item-success' :post.loveIts>0,
 'list-group-item-danger' :post.loveIts<0
 }">
-  <div class="container">
-    <div class="row">
-      <div class="left col-xs-6">
+  <div >
+    <span >
         <h3><b> {{post.title}}</b> </h3>
-      </div>
-      <div class="text-center col-xs-6">
-        <div class="text-muted"><i>{{post.created_at | date : 'short'}}</i></div >
-      </div>
-    </div>
+      <span >
+        <span class="text-muted"><i> créé le {{post.created_at | date : ' dd/MM/yyyy à hh:mm '}}</i></span >
+      </span>
+    </span>
   </div>
-
+  <br/>
+  <div >
   {{post.content}}
-
-  <div class="btn-group-xs">
+  </div>
+  <br/>
+  <div >
     <br/>
-    <button class="btn btn-success" (click)="increaseLoveIts()">j'aime</button>
-    <button class="btn btn-danger" (click)="decreaseLoveIts()">je n'aime pas</button>
+    <button class="btn btn-success glyphicon glyphicon-thumbs-up" (click)="onIncreaseLoveIts()"></button>
+    <button class="btn btn-danger glyphicon glyphicon-thumbs-down" (click)="onDecreaseLoveIts()"></button>
+    <button class="btn btn-danger btn-default pull-right glyphicon glyphicon-trash " (click)="onRemoveItem()"></button>
   </div>
 </li>

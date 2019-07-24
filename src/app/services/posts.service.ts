@@ -36,22 +36,25 @@ export class PostsService {
 
     createNewPost(newPost: Post) {
         this.posts.push(newPost);
-        this.savePosts();
-        this.emitPosts();
+        this.updatePosts();
       }
 
-      removePost(post: Post) {
-        const postIndexToRemove = this.posts.findIndex(
-          (postEl) => {
-            if(postEl === post) {
-              return true;
-            }
+    removePost(post: Post) {
+      const postIndexToRemove = this.posts.findIndex(
+        (postEl) => {
+          if(postEl === post) {
+            return true;
           }
-        );
-        this.posts.splice(postIndexToRemove, 1);
+        }
+      );
+      this.posts.splice(postIndexToRemove, 1);
+      this.updatePosts();
+    }
+
+    updatePosts(){
         this.savePosts();
         this.emitPosts();
-      }
+    }
 
 
 }

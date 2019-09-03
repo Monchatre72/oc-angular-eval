@@ -26,13 +26,13 @@ export class PostListComponent implements OnInit {
     this.postsService.emitPosts();
   }
 
-  onNewPost() {
-    this.router.navigate(['/new']);
-  }
+  // onNewPost() {
+  //  this.router.navigate(['/new']);
+  //}
 
-  onDeletePost(post: Post) {
-    this.postsService.removePost(post);
-  }
+  //onDeletePost(post: Post) {
+  //  this.postsService.removePost(post);
+  //}
 
   ngOnDestroy() {
     this.postsSubscription.unsubscribe();

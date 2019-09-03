@@ -11,27 +11,34 @@ import { ItemComponent } from './post-list/item/item.component';
 import { NewPostComponent } from './post-list/new-post/new-post.component';
 
 import {PostsService} from './services/posts.service';
-
+import { DeletePopupComponent } from './dialog/delete-popup/delete-popup.component';
+import {MatDialogModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PostListComponent,
     ItemComponent,
-    NewPostComponent
+    NewPostComponent,
+    DeletePopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
-
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
   PostsService
   ],
+
+    entryComponents: [
+      DeletePopupComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

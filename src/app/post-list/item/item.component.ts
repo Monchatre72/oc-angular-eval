@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Post } from '../../models/post';
 import { PostsService } from '../../services/posts.service';
-
+import {MatDialog, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog';
+import { DeletePopupComponent } from '../../dialog/delete-popup/delete-popup.component';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -12,7 +13,7 @@ export class ItemComponent implements OnInit {
 @Input() post: Post;
 
 
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,22 @@ export class ItemComponent implements OnInit {
     console.log('nombre de loveIts :' + this.post.loveIts );
   }
   onRemoveItem(){
-  this.postsService.removePost(this.post) ;
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = {
+        title: this.post.title
+        }
+    this.dialog.open(DeletePopupComponent,
+     dialogConfig
+     // data: {
+       // title: this.post.title
+     // }
+    );
+
+  //this.postsService.removePost(this.post) ;
 
   }
 
